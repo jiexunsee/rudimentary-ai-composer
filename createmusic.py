@@ -45,7 +45,7 @@ for note in notes:
 X = []
 Y = []
 n_prev = 30
-# 100 notes to predict the 101th note
+# n_prev notes to predict the (n_prev+1)th note
 for i in range(len(notes)-n_prev):
 	x = notes[i:i+n_prev]
 	y = notes[i+n_prev]
