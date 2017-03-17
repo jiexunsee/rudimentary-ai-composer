@@ -63,10 +63,10 @@ model.add(Dropout(0.2))
 model.add(LSTM(64, input_shape=(n_prev, 3), return_sequences=False))
 model.add(Dropout(0.2))
 model.add(Dense(3))
-model.add(Activation('softmax'))
+model.add(Activation('linear'))
 
 optimizer = RMSprop(lr=0.01)
-model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+model.compile(loss='mse', optimizer='rmsprop')
 model.fit(X, Y, batch_size=300, epochs=400, verbose=1)
 ###########################################
 
