@@ -87,14 +87,14 @@ for i in range(3000):
 	prediction.append(preds)
 
 for pred in prediction:
-	pred[0] = int(127*pred[0])
+	pred[0] = int(88*pred[0] + 24)
 	pred[1] = int(127*pred[1])
 	pred[2] *= max_t
 	# to reject values that will be out of range
-	if pred[0] < 0:
-		pred[0] = 0
-	elif pred[0] > 127:
-		pred[0] = 127
+	if pred[0] < 24:
+		pred[0] = 24
+	elif pred[0] > 102:
+		pred[0] = 102
 	if pred[1] < 0:
 		pred[1] = 0
 	elif pred[1] > 127:
