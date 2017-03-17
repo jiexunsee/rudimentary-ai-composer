@@ -22,8 +22,9 @@ for msg in mid:
 		### only interested in piano channel
 		if msg.channel == 0:
 			if msg.type == 'note_on':
-				note = msg.bytes() # note in vector form to train on
-				# only interested in the note and velocity
+				# note in vector form to train on
+				note = msg.bytes() 
+				# only interested in the note and velocity. note message is in the form of [type, note, velocity]
 				note = note[1:3]
 				note.append(time-prev)
 				prev = time
@@ -33,7 +34,7 @@ for msg in mid:
 ######## SCALE DATA TO BETWEEN 0, 1 #######
 t = []
 for note in notes:
-	note[0] = note[0]/127
+	note[0] = (note[0]-24)/88
 	note[1] = note[1]/127
 	t.append(note[2])
 max_t = max(t) # scale based on the biggest time of any note
