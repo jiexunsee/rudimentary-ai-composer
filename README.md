@@ -1,5 +1,5 @@
 # Rudimentary AI Music Composer
-The aim was to do a very basic AI music composer in 100 lines of code. This script takes a midi file and extracts just the notes in the music piece, converting the piece into a large array of notes.
+The aim was to do a very basic AI music composer in 100 lines of code. This script takes a midi file and extracts just the notes, converting the piece into a large array of notes.
 
 It uses the mido library for the handling of midi files and messages. The music I used was a Allegro con spirito by Mozart from [Classical Piano Midi Page](http://www.piano-midi.de/mozart.htm)
 
