@@ -58,17 +58,18 @@ seed = notes[0:n_prev]
 
 ############### BUILD MODEL ###############
 print('Build model...')
-model = Sequential()
-model.add(LSTM(128, input_shape=(n_prev, 3), return_sequences=True))
-model.add(Dropout(0.2))
-model.add(LSTM(64, input_shape=(n_prev, 3), return_sequences=False))
-model.add(Dropout(0.2))
-model.add(Dense(3))
-model.add(Activation('linear'))
+model=Sequential()
+model.add(LSTM(512,input_shape=(20,3),return_sequences=True)) #np is 20*3
+model.add(Dropout(0.3))
+model.add(LSTM(512,return_sequences=True)) #return_sequences=False #return_sequences=False
+model.add(Dropout(0.3))
+model.add(LSTM(512))
+model.add(Dense(256))
+model.add(Dropout(0.3))
+model.add(Dense(3,activation="softmax")) #output=3
 
-optimizer = RMSprop(lr=0.01)
-model.compile(loss='mse', optimizer='rmsprop')
-model.fit(X, Y, batch_size=300, epochs=400, verbose=1)
+model.compile(loss="categorical_crossentropy",optimizer="RMSprop",metrics=["accuracy"])
+model.fit(x,y,epochs=1000,batch_size=200,validation_split=0.1)
 ###########################################
 
 ############ MAKE PREDICTIONS #############
